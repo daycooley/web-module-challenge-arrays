@@ -1,5 +1,7 @@
 /*REMEMBER TO RETURN ALL OF THE ANSWERS ON THESE TASKS, IF YOU DON'T, THE AUTOGRADER WILL NOT WORK*/
 
+const { transformFileAsync } = require("@babel/core");
+
 /* 👀 This is your data ⬇ */
 const originalFlavors = [
   "Banana Nut Fudge",
@@ -45,11 +47,12 @@ Use the copy function below to do the following:
   2. Return a copy of the received array  
 */
 
-function copy(/*your code here*/){
+function copy(flavors){
   /*your code here*/
+  return (flavors);
 }    
 
-
+console.log( 'task1', copy(originalFlavors));
 
 
 
@@ -64,9 +67,15 @@ For Example: is31Flavors(originalFlavors) will return true if your code is worki
 */
 
 
-function is31Flavors(/*your code here*/){
- /*your code here*/
+function is31Flavors(flavors){
+  if(flavors.length === 31){
+    return true;
+  }else return false;
+  
+  
 }
+    
+console.log('task2', is31Flavors(originalFlavors))
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Corporate has come to you with an idea for a new flavor: Rainbow Sherbert! They think this will be a game changer. You need to modify the array to include this flavor. 
@@ -81,10 +90,12 @@ Use the addFlavor function below to do the following:
 */
 
 
-function addFlavor(/*your code here*/){
+function addFlavor(flavors, flavor){
+ flavors.unshift(flavor);
+  return flavors;
  /*your code here*/
 }
-
+console.log('task3',  addFlavor(originalFlavors,"Rainbow Sherbert") )
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Houston, we have a problem! There are now 32 flavors in the originalFlavors array! Your task is to remove an item from the end of the array. 
@@ -97,11 +108,13 @@ Use the removeLastFlavor function below to do the following:
   For example: running removeLastFlavor(originalFlavors) would return ["Rainbow Sherbert", "Banana Nut Fudge",..."Vanilla"]
 */
 
-function removeLastFlavor(/*your code here*/){
+function removeLastFlavor(flavors){
+  flavors.pop();
+  return flavors;
  /*your code here*/
 }
 
-
+console.log('task4', removeLastFlavor(originalFlavors))
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Write a function that returns a flavor at a given index in the array.
@@ -114,10 +127,11 @@ Use the getFlavorByIndex function below to do the following:
   For example: running getFlavorByIndex(originalFlavors, 2) would return "Black Walnut", assuming Rainbow Sherbert has been added successfully
 */
 
-function getFlavorByIndex(/*your code here*/){
+function getFlavorByIndex(flavors,index){
+  return flavors[index]
   /*your code here*/
 }
-
+console.log ('task4' , getFlavorByIndex(originalFlavors, 7))
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 As corporate wants to add more and more flavors to their lineup, they've realized that they need to remove flavors based on flavor name, 
@@ -134,10 +148,14 @@ Use the removeFlavorByName function below to do the following:
   HINT: You can use .splice() for this
 */
 
-function removeFlavorByName(/*your code here*/){
+function removeFlavorByName(flavors,flavor){
   /*your code here*/
+  let index = flavors.indexOf(flavor);
+    flavors.splice(index,1);
+      return flavors
+    
 }
-
+console.log (removeFlavorByName(originalFlavors,"Rocky Road"))
 
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 7: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -160,7 +178,10 @@ Use the filterByWord function below to do the following:
   DO NOT USE ADVANCED ARRAY METHODS (i.e. .filter) to solve this problem. 
 */
 
-function filterByWord(/*your code here*/){
+function filterByWord(flavors,flavor){
+  
+  let includesFlavor=flavors.includes(flavor);
+  return true
   /*your code here*/
 }
 
